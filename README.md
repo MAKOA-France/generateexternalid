@@ -1,9 +1,18 @@
 # generateexternalid
 
-![Screenshot](/images/screenshot.png)
+ This extension allows you to create an external identifier for individual contact types. 
+  It concatenates the last name and first names in lowercase. For each channel it:
+  - remove special characters
+  - replaces accented characters with their non-accented characters
+  - remove spaces
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+  This is done each time a contact is created or modified.
 
+  An API4 ActionIndividu > GenerateExternalId allows you to do this individually or in batches with the following parameters:
+  - contact_id: identifier of the contact where we want to regenerate the external identifier. Set the value 0 If we want to make all individuals.
+
+  - contact_sub_type: Contact subtype of individuals where we want to regenerate the external identifier.
+  Mandatory if the contact_id is not provided. But can be added to the contact_id
 The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
 ## Requirements
