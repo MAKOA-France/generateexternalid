@@ -13,6 +13,8 @@
 
   - contact_sub_type: Contact subtype of individuals where we want to regenerate the external identifier.
   Mandatory if the contact_id is not provided. But can be added to the contact_id
+
+
 The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
 ## Requirements
