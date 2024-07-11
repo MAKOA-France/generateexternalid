@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<extension key="generateexternalid" type="module">
+  <file>generateexternalid</file>
+  <name>generateexternalid</name>
+  <description>
+  This extension allows you to create an external identifier for individual contact types. 
+  It concatenates the last name and first names in lowercase. For each channel it:
+  - remove special characters
+  - replaces accented characters with their non-accented characters
+  - remove spaces
+
+  This is done each time a contact is created or modified.
+
+  An API4 ActionIndividu > GenerateExternalId allows you to do this individually or in batches with the following parameters:
+  - contact_id: identifier of the contact where we want to regenerate the external identifier. Set the value 0 If we want to make all individuals.
+
+  - contact_sub_type: Contact subtype of individuals where we want to regenerate the external identifier.
+  Mandatory if the contact_id is not provided. But can be added to the contact_id
+  </description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>BREHERET</author>
+    <email>breheret@makoa.fr</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">http://FIXME</url>
+    <url desc="Documentation">http://FIXME</url>
+    <url desc="Support">http://FIXME</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2024-07-10</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>5.65</ver>
+  </compatibility>
+  <comments>This is a new, undeveloped module</comments>
+  <classloader>
+    <psr0 prefix="CRM_" path="."/>
+    <psr4 prefix="Civi\" path="Civi"/>
+  </classloader>
+  <civix>
+    <namespace>CRM/Generateexternalid</namespace>
+    <format>23.02.1</format>
+    <angularModule>crmGenerateexternalid</angularModule>
+  </civix>
+  <mixins>
+    <mixin>mgd-php@1.0.0</mixin>
+    <mixin>setting-php@1.0.0</mixin>
+    <mixin>smarty-v2@1.0.1</mixin>
+  </mixins>
+</extension>
