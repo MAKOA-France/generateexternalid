@@ -54,12 +54,17 @@ class CRM_Generateexternalid_Utils {
             // another contact has this external id so add their id at the end
             if ($contact_other) $strFormatted .= '-'.$id;
 
+            $contact = \Civi\Api4\Contact::get(FALSE)
+            ->addWhere('id', '<>', $id )
+            ->execute()->first();
+
             // update external identifier
             $api = \Civi\Api4\Contact::update(FALSE);
             $api->addValue('first_name',$first_name);
             if (!empty($middle_name)) $api->addValue('middle_name', $middle_name);
             $api->addValue('last_name', $last_name);
             $api->addValue('external_identifier', $strFormatted);
+            $api->addValue('modified_date', $contact['modified_date']);
             $api->addWhere('id', '=', $id);
             $resul = $api->execute();
           return true;
