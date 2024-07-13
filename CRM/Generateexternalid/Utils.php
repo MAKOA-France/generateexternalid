@@ -40,8 +40,20 @@ class CRM_Generateexternalid_Utils {
         $strFormatted = self::remove_accents_and_special_chars($str,"");
         $strFormatted = strtolower($strFormatted);
 
-        // if external identifier is different to this on bdd
-        if( $external_identifier != $strFormatted){
+        $strFormattedPlusID = $strFormatted . '-'.$id;
+
+        // if external identifier is different to this on bdd and different if added id at the end
+        if( $external_identifier != $strFormatted && $external_identifier != $strFormattedPlusID){
+
+            //Verfiier si l'exteranlId exidt deja pour un autre contact ?
+            $contact_id = 0;
+            $contact_other = \Civi\Api4\Contact::get(FALSE)
+            ->addWhere('external_identifier', '=', $strFormatted)
+            ->addWhere('id', '<>', $id )
+            ->execute()->first();
+            // another contact has this external id so add their id at the end
+            if ($contact_other) $strFormatted .= '-'.$id;
+
             // update external identifier
             $api = \Civi\Api4\Contact::update(FALSE);
             $api->addValue('first_name',$first_name);

@@ -38,7 +38,7 @@ function generateexternalid_civicrm_post(string $op, string $objectName, int $ob
   if($objectName == 'Individual' && ($op == 'create' || $op == 'edit')){
     if($objectRef && $objectId){
       if (is_object($objectRef) && get_class($objectRef) == 'CRM_Contact_DAO_Contact'){
-       U::setIndividualExternalIdentifier($objectRef);
+        U::setIndividualExternalIdentifier($objectRef);
       }
     }
   }
